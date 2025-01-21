@@ -80,6 +80,23 @@ const logout = TryCatch(async (req, res) => {
     });
 });
 
+const searchUser = TryCatch(async (req, res) => {
+
+    const { name } = req.query; 
 
 
-export { login, newUser, getMyProfile, logout };
+
+    return res
+        .status(200)
+        .cookie("HappyChat-Token", "", {...cookieOptions, maxAge: 0 })
+        .json({
+            success: true,
+            message: `Welcome to Mr. ${name}`
+        });
+});
+
+
+
+
+
+export { login, newUser, getMyProfile, logout, searchUser };
